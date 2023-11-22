@@ -1,0 +1,6 @@
+[
+    {"id":1, "modelo":"Zenith Astra SPR", "precio": 1000, "img": "./img/biciZenith1.jpg"},
+    {"id":2, "modelo":"Zenith Astra COMP", "precio": 2000, "img": "./img/biciZenith2.jpg" },
+    {"id":3, "modelo":"Zenith Calea SPR", "precio": 3000, "img": "./img/biciZenith3.jpg"},
+    {"id":4, "modelo":"Zenith Calea COMP", "precio": 4000, "img": "./img/biciZenith4.jpg"}
+]
