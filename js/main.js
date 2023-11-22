@@ -1,18 +1,10 @@
-const listado = document.getElementById("listado")
+import { comprarProducto } from "./carrito.js";
 
-const carrito =[];
-
-const agregarCarrito = () => {
-    const comprar = document.getElementById("comprar")
-    comprar.addEventListener(click, ()=>{
-
-    }) 
-}
+const listado = document.getElementById("listado") 
 
 const mostrarListado = async () => {
-    const resp = await fetch("/data.json")
+    const resp = await fetch("./json/data.json")
     const data = await resp.json();
-
     data.forEach(item => {
         const div = document.createElement("div")
         div.innerHTML = `    
@@ -27,6 +19,10 @@ const mostrarListado = async () => {
         </div>
         `
         listado.append(div)
-    })
-}
+
+        const botonComprar = document.getElementById(`compra${item.id}`)
+        botonComprar.addEventListener("click", ()=> comprarProducto(item.id))
+        })
+    }
+
 mostrarListado()
