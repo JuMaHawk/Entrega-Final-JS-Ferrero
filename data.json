@@ -1,0 +1,6 @@
+[
+    {"categoria":"Mountain Bike", "precio": 1000, "img": "./img/biciZenith1.jpg"},
+    {"categoria":"Paseo", "precio": 2000, "img": "./img/biciZenith2.jpg" },
+    {"categoria":"Bmx", "precio": 3000, "img": "./img/biciZenith3.jpg"},
+    {"categoria":"Semi carrera", "precio": 4000, "img": "./img/biciZenith4.jpg"}
+]
