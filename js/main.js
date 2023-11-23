@@ -1,11 +1,20 @@
 import { comprarProducto } from "./carrito.js";
 
+export let productosOK = [];
+
 const listado = document.getElementById("listado") 
 
-const mostrarListado = async () => {
+const pedirStock = async () => {
     const resp = await fetch("./json/data.json")
-    const data = await resp.json();
-    data.forEach(item => {
+    let data = await resp.json();
+    localStorage.setItem("productosLS", JSON.stringify(data))
+}
+pedirStock()
+
+const mostrarProductos = () => {
+    productosOK =  JSON.parse(localStorage.getItem("productosLS"))
+    
+    productosOK.forEach(item => {
         const div = document.createElement("div")
         div.innerHTML = `    
         <div class="card col-lg-4 col-sm-12 mx-auto" style="width: 20rem;">
@@ -23,6 +32,7 @@ const mostrarListado = async () => {
         const botonComprar = document.getElementById(`compra${item.id}`)
         botonComprar.addEventListener("click", ()=> comprarProducto(item.id))
         })
-    }
+}
+mostrarProductos()
 
-mostrarListado()
+
