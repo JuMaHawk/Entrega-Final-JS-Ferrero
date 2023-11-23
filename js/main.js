@@ -1,6 +1,6 @@
 import { comprarProducto } from "./carrito.js";
 
-export let productosOK = [];
+export let productosOK = JSON.parse(localStorage.getItem("productosLS"))
 
 const listado = document.getElementById("listado") 
 
@@ -12,8 +12,7 @@ const pedirStock = async () => {
 pedirStock()
 
 const mostrarProductos = () => {
-    productosOK =  JSON.parse(localStorage.getItem("productosLS"))
-    
+        
     productosOK.forEach(item => {
         const div = document.createElement("div")
         div.innerHTML = `    
