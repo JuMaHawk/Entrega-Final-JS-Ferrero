@@ -64,7 +64,20 @@ export const comprarProducto = (idProducto) => {
         sessionStorage.setItem("carrito", JSON.stringify(carrito))
     }
     carrito = JSON.parse(sessionStorage.getItem("carrito"))
-    alert(`Usted compro el producto ${modelo}`)
+    
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Bicicleta agregada al carrito"
+      });
+
     renderCarrito()
 }
 
