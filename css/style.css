@@ -2,3 +2,21 @@ header{
     background-color: orange;
     text-align: center;
 }
+
+#carrito{
+    background-color: orange;
+    display: none;
+    position: fixed;
+    top: 20%;
+    right: 0;
+    width: 50%;
+    height: auto;
+    z-index: 500;
+    border: 2px solid green;
+    text-align: center;
+}
+
+#fotoCarrito{
+    width: 50%;
+    height: 50%;
+}
