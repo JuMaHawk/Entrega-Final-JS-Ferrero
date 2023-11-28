@@ -2,7 +2,10 @@ import { comprarProducto } from "./carrito.js";
 
 export let productosOK = JSON.parse(localStorage.getItem("productosLS"))
 
-const listado = document.getElementById("listado") 
+const listado = document.getElementById("listado")
+
+const inputBusqueda = document.getElementById("inputBusqueda")
+
 
 const pedirStock = async () => {
     const resp = await fetch("./json/data.json")
@@ -12,8 +15,9 @@ const pedirStock = async () => {
 pedirStock()
 
 const mostrarProductos = () => {
-        
+
     productosOK.forEach(item => {
+        
         const div = document.createElement("div")
         div.innerHTML = `    
         <div class="card col-lg-4 col-sm-12 mx-auto" style="width: 20rem;">
@@ -29,9 +33,22 @@ const mostrarProductos = () => {
         listado.append(div)
 
         const botonComprar = document.getElementById(`compra${item.id}`)
-        botonComprar.addEventListener("click", ()=> comprarProducto(item.id))
-        })
+        botonComprar.addEventListener("click", () => comprarProducto(item.id))
+    })
 }
 mostrarProductos()
 
 
+inputBusqueda.addEventListener("keyup", (e) => {
+    const productosFiltrados = productosOK.filter((item) => item.modelo.toLowerCase().includes(e.target.value))
+    console.log(productosFiltrados)
+    productosOK = productosFiltrados
+    if (e.target.value !== "") {
+        listado.innerHTML = ``
+        mostrarProductos(productosFiltrados)
+    } else {
+        listado.innerHTML = ``
+        productosOK = JSON.parse(localStorage.getItem("productosLS"))
+        mostrarProductos(productosOK)
+    }
+})
